@@ -1,14 +1,14 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 dotenv.config();
 const connectionString = process.env.MONGODB_URI;
-// Connection to mongoDB
+
 function connectToMongoDB() {
   mongoose.connect(connectionString);
 
   mongoose.connection.on("connected", () => {
-    console.log("Connection To MongoDB Successsful.");
+    console.log("Connection to MongoDB succesfull.");
   });
 
   mongoose.connection.on("error", (err) => {
@@ -17,4 +17,4 @@ function connectToMongoDB() {
   });
 }
 
-export default connectToMongoDB;
+module.exports = connectToMongoDB;
