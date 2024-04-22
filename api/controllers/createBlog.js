@@ -2,6 +2,7 @@ const blogModel = require("../models/blogs");
 const userModel = require("../models/users");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
+const logger = require("../logger");
 
 dotenv.config();
 
@@ -32,8 +33,10 @@ async function createBlog(req, res, next) {
     //    const user = await foundUser.findByIdAndUpdate({ _id: decodedJWT.user._id }, { $push: {blogs: blog} });
     // const user = await userModel.updateOne({blogs}, )
     // await userModel.save();
+    logger.info("Blog Created Successfully!");
     res.json({ message: "Blog Created Successfuly!" });
   } catch (error) {
+    logger.error("Error creating blog:", error);
     next(error);
   }
 }
@@ -48,8 +51,10 @@ async function getAllBlogs(req, res, next) {
     const skip = (page - 1) * limit;
     const blogs = await blogModel.blog.find().skip(skip).limit(limit);
 
+    logger.info("Retrieved all blogs successfully!");
     res.json({ blogs, message: "Gotten All Blogs Successfully!" });
   } catch (error) {
+    logger.error("Error retrieving blogs:", error);
     next(error);
   }
 }
@@ -57,26 +62,27 @@ async function getAllBlogs(req, res, next) {
 async function editBlog(req, res, next) {
   const blogId = req.params.id;
   // const changeState = req.params.state;
-  const newText = req.body; //The text or object to update the object to.
+  const newText = req.body; // The text or object to update the object to.
 
-  const update = blogModel.blog
-    .findByIdAndUpdate(blogId, newText)
-    .then((newText) => {
-      res.status(200).send(update);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send(err);
-    });
+  try {
+    const update = await blogModel.blog.findByIdAndUpdate(blogId, newText);
+    logger.info("Blog updated successfully!"); // Log informational message
+    res.status(200).send(update);
+  } catch (error) {
+    logger.error("Error updating blog:", error); // Log error
+    res.status(500).send(error);
+  }
 }
 
 async function deleteBlog(req, res, next) {
   const blogId = req.params.id;
   blogModel.blog.findByIdAndRemove(blogId, (err, done) => {
     if (err) {
+      logger.error("Error deleting blog:", err);
       res.status().send(err);
     }
 
+    logger.info("Blog deleted successfully!");
     res.json({ done, message: "Blog Deleted Successfully!" });
   });
 }
@@ -89,10 +95,12 @@ async function updateState(req, res) {
   const update = await blogModel.blog
     .findByIdAndUpdate({ _id: blogId }, newState, { new: true })
     .then((newText) => {
+      logger.info("Blog state updated successfully!");
       res.json({ message: "Successfully Updated" });
     })
     .catch((err) => {
       console.log(err);
+      logger.error("Error updating blog state:", error);
       res.status(500).send(err);
     });
 }
