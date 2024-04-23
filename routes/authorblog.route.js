@@ -1,6 +1,7 @@
 const express = require("express");
 const blogModel = require("../models/blog.model");
 const jwt = require("jsonwebtoken");
+const logger = require("../logger");
 
 const authorBlogRoute = express.Router();
 const { blogImages, fileSizeConverter } = require("../uploadFunction");
@@ -52,12 +53,17 @@ authorBlogRoute.post("/", blogImages.array("files", 10), async (req, res) => {
     await blogModel
       .create(blogDetails)
       .then((blog) => {
+        logger.info(`New blog created by ${blogAuthor}`);
         return res.json({ status: true, blog }).status(201);
       })
       .catch((err) => {
+        logger.error(
+          `Error creating new blog by ${blogAuthor}: ${err.message}`
+        );
         return res.json({ status: false, message: err }).status(403);
       });
   } catch (err) {
+    logger.error(`Error creating new blog by ${blogAuthor}: ${err.message}`);
     res.status(500).json(err);
   }
 });
@@ -84,8 +90,12 @@ authorBlogRoute.get("/", async (req, res) => {
         .limit(limit * 1)
         .skip((page - 1) * limit);
     }
+    logger.info(`Retrieved ${blogs.length} blogs for author ${blogAuthor}`);
     res.status(200).json({ total_blogs: blogs.length, blogs });
   } catch (err) {
+    logger.error(
+      `Error retrieving blogs for author ${blogAuthor}: ${err.message}`
+    );
     res.status(500).json({ status: false, message: err });
   }
 });
@@ -103,12 +113,17 @@ authorBlogRoute.get("/:blogId", async (req, res) => {
     .findById(blogId)
     .then((blog) => {
       if (!blog) {
+        logger.info(`Blog ${blogId} not found`);
         return res.status(404).json({ status: false, blog: null });
       } else if (blogAuthor === blog.author) {
         const { author, ...result } = blog;
         const blogResult = result._doc;
+        logger.info(`Blog ${blogId} viewed by ${blogAuthor}`);
         return res.json({ status: true, witten_by: author, blogResult });
       } else {
+        logger.warn(
+          `Unauthorized attempt to view blog ${blogId} by ${blogAuthor}`
+        );
         return res.status(401).json({
           status: false,
           message: "you can only view blogs written by you",
@@ -116,6 +131,7 @@ authorBlogRoute.get("/:blogId", async (req, res) => {
       }
     })
     .catch((err) => {
+      logger.error(`Error retrieving blog ${blogId}: ${err.message}`);
       return res.status(404).json({ status: false, message: err });
     });
 });
@@ -147,14 +163,20 @@ authorBlogRoute.patch("/:id", async (req, res) => {
 
         updatedBlog.save();
 
+        logger.info(`Post ${blogId} successfully patched by ${blogAuthor}`);
         res.status(200).json(updatedBlog);
       } catch (err) {
+        logger.error(`Error patching post ${blogId}: ${err.message}`);
         res.status(500).json(err);
       }
     } else {
+      logger.warn(
+        `Unauthorized attempt to patch post ${blogId} by ${blogAuthor}`
+      );
       res.status(401).json("You can only update your own post!");
     }
   } catch (err) {
+    logger.error(`Error finding post ${blogId}: ${err.message}`);
     res.status(500).json(err);
   }
 });
@@ -186,14 +208,20 @@ authorBlogRoute.put("/:id", async (req, res) => {
 
         updatedBlog.save();
 
+        logger.info(`Post ${blogId} successfully updated by ${blogAuthor}`);
         res.status(200).json(updatedBlog);
       } catch (err) {
+        logger.error(`Error updating post ${blogId}: ${err.message}`);
         res.status(500).json(err);
       }
     } else {
+      logger.warn(
+        `Unauthorized attempt to update post ${blogId} by ${blogAuthor}`
+      );
       res.status(401).json("You can only update your own post!");
     }
   } catch (err) {
+    logger.error(`Error finding post ${blogId}: ${err.message}`);
     res.status(500).json(err);
   }
 });
@@ -212,14 +240,20 @@ authorBlogRoute.delete("/:id", async (req, res) => {
     if (blog.author === blogAuthor) {
       try {
         await blog.delete();
-        res.status(200).json("Post successfully deleted...");
+        logger.info(`Post ${blogId} successfully deleted by ${blogAuthor}`);
+        res.status(200).json("Post successfully deleted");
       } catch (err) {
+        logger.error(`Error deleting post ${blogId}: ${err.message}`);
         res.status(500).json(err);
       }
     } else {
+      logger.warn(
+        `Unauthorized attempt to delete post ${blogId} by ${blogAuthor}`
+      );
       res.status(401).json("You can delete only your own post!");
     }
   } catch (err) {
+    logger.error(`Error finding post ${blogId}: ${err.message}`);
     res.status(500).json(err);
   }
 });

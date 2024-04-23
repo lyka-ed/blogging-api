@@ -55,3 +55,44 @@
 | readingTime | Number    | default: NaN                                          |
 | read_count  | Number    | default: 0                                            |
 | timeStamp   | Date      | dafault: Date.now                                     |
+
+### Sign-up
+
+- route: /signup
+- method: /POST
+
+- use form-encode for body signup
+
+```
+|      key          |      vaule      |
+| ----------------- |  -------------- |
+|     username      |    gloryedem    |
+|     firstname     |    Glory        |
+|     lastname      |    Edem         |
+|     email         | glory@gmail.com |
+|     password      |    asdfghqw1    |
+```
+
+### Login User
+
+- route: /login
+- Method: POST
+  -- use form-encode format for the body login
+- Body:
+
+````
+
+|    key    |  data_type  |
+|-------    | ----------- |
+|  username |  gloryedem  |
+|  password |  asdfghqw1  |
+
+```
+
+### Create Blog
+
+- route: /authorblog
+- method:   POST
+- Headers: add "Authorization(query parameter)" : secret_token = {token}
+
+````

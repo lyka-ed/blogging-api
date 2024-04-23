@@ -1,5 +1,6 @@
 const express = require("express");
 const blogModel = require("../models/blog.model");
+const logger = require("../logger");
 
 const blogsRoute = express.Router();
 
@@ -77,8 +78,10 @@ blogsRoute.get("/", async (req, res) => {
         .limit(limit * 1)
         .skip((page - 1) * limit);
     }
+    logger.info(`Retrieved ${blogs.length} blogs`);
     res.status(200).json({ total_blogs: blogs.length, blogs });
   } catch (err) {
+    logger.error(`Error retrieving blogs: ${err.message}`);
     res.status(500).json({ status: false, message: err });
   }
 });
@@ -103,9 +106,11 @@ blogsRoute.get("/:blogId", async (req, res) => {
 
       const { author, ...result } = blog;
       const blogResult = result._doc;
+      logger.info(`Retrieved blog with ID ${blogId}`);
       return res.json({ status: true, witten_by: author, blogResult });
     })
     .catch((err) => {
+      logger.error(`Error retrieving blog with ID ${blogId}: ${err.message}`);
       return res.status(404).json({ status: false, message: err });
     });
 });

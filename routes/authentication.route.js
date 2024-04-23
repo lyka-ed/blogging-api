@@ -1,6 +1,8 @@
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const logger = require("../logger");
+
 require("dotenv").config();
 
 const authenticationRouter = express.Router();
@@ -9,6 +11,7 @@ authenticationRouter.post(
   "/signup",
   passport.authenticate("signup", { session: false }),
   async (req, res, next) => {
+    logger.info("Signup successful", { user: req.user });
     res.json({
       message: "Signup successful",
       user: req.user,
@@ -18,6 +21,7 @@ authenticationRouter.post(
 
 authenticationRouter.post("/login", async (req, res, next) => {
   passport.authenticate("login", async (err, user, info) => {
+    logger.info("Login  Accessed");
     try {
       if (err) {
         return next(err);
@@ -43,6 +47,7 @@ authenticationRouter.post("/login", async (req, res, next) => {
         return res.json({ token });
       });
     } catch (error) {
+      logger.error(`Error in login: ${error.message}`);
       return next(error);
     }
   })(req, res, next);
