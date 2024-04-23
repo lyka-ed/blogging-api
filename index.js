@@ -2,15 +2,14 @@ const express = require("express");
 const dotenv = require("dotenv");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-const AuthenticationRoute = require("./src/routes/authentication.route");
+const AuthenticationRoute = require("./routes/authentication.route");
+const authorBlogRoute = require("./routes/authorblog.route");
+const blogsRoute = require("./routes/blog.route");
 
 const app = express();
 dotenv.config();
 
-require("./src/controllers/authentication.controller");
-
-const authorBlogRoute = require("./src/routes/authorblog.route");
-const blogsRoute = require("./src/routes/blogs.route");
+require("./controllers/authentication.controller");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -38,4 +37,4 @@ app.use(function (err, req, res, next) {
   res.json({ error: err.message });
 });
 
-module.exports = app;
+module.exports = app; //for testing & app.js

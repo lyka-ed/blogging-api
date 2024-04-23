@@ -44,15 +44,14 @@
 
 ### Blog
 
-| field       | data-type | constraints               |
-| ----------- | --------- | ------------------------- |
-| title       | String    | required, unique          |
-| description | String    | required                  |
-| body        | String    | required                  |
-| author      | String    | required                  |
-| authorID    | ObjectId  | ref                       |
-| tags        | Array     |                           |
-| state       | String    | required, default:"draft" |
-| readingTime | String    | default: NaN              |
-| read_count  | Number    | default: 0                |
-| timeStamp   | Date      | dafault: Date.now         |
+| field       | data-type | constraints                                           |
+| ----------- | --------- | ----------------------------------------------------- |
+| title       | String    | required, unique                                      |
+| description | String    | required                                              |
+| body        | String    | required , unique                                     |
+| author      | String    | required                                              |
+| tags        | Array     | required                                              |
+| state       | String    | required,default:"draft",enum: ["draft", "published"] |
+| readingTime | Number    | default: NaN                                          |
+| read_count  | Number    | default: 0                                            |
+| timeStamp   | Date      | dafault: Date.now                                     |

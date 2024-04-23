@@ -4,15 +4,13 @@
   "description": "A robust Blogging API with various features and endpoints to manage articles created by users.",
   "main": "app.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --testTimeout=1900",
+    "test": "jest",
     "start": "nodemon app.js",
     "dev": "nodemon app.js"
   },
   "author": "Glory Edem",
   "license": "ISC",
   "devDependencies": {
-    "chai-http": "^4.4.0",
-    "mocha": "^10.4.0",
     "nodemon": "^3.1.0"
   },
   "dependencies": {
@@ -21,13 +19,14 @@
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.18.0",
+    "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0",
     "mongoose": "^8.3.1",
+    "multer": "^1.4.5-lts.1",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
