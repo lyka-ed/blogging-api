@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const { getReadingTime } = require("../utils/appFeature");
 
 const BlogSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: [true, "Blog is required"],
       unique: true,
     },
 
@@ -14,12 +15,12 @@ const BlogSchema = new mongoose.Schema(
     },
 
     tags: {
-      type: Array,
-      required: true,
+      type: [String],
     },
 
     author: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
 
@@ -37,17 +38,36 @@ const BlogSchema = new mongoose.Schema(
 
     reading_time: {
       type: Number,
+      default: 0,
     },
 
     body: {
       type: String,
-      required: true,
+      required: [true, "Bodey is required"],
       unique: true,
     },
-
-    files: [Object],
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      transform: function (doc, blog) {
+        delete blog.__v;
+      },
+    },
+  }
 );
 
-module.exports = mongoose.model("Blog", BlogSchema);
+// Reading time  calculation before saving document
+BlogSchema.pre(/^(updateOne|save|findOneAndUpdate)/, function (next) {
+  if (this.body) {
+    this.reading_time = getReadingTime(this.body);
+  }
+  next();
+});
+
+// Text index setup to optimize search
+BlogSchema.index({ title: "text", description: "text", tags: "text" });
+
+const Blog = mongoose.model("Blog", BlogSchema);
+
+module.exports = { Blog };

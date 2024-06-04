@@ -1,89 +1,31 @@
-const passport = require("passport");
-const localStrategy = require("passport-local").Strategy;
-const UserModel = require("../models/user.model");
+const authService = require("../services/auths.service.js");
+const { loginSchema, signupSchema } = require("../middleware/validation.js");
+const { validate } = require("../utils/appFeature.js");
 
-const JWTstrategy = require("passport-jwt").Strategy;
-const ExtractJWT = require("passport-jwt").ExtractJwt;
+const signUp = async (req, res) => {
+  // console.log("Lyka bby", req.body);
 
-passport.use(
-  new JWTstrategy(
-    {
-      secretOrKey: process.env.JWT_SECRET,
-      jwtFromRequest: ExtractJWT.fromUrlQueryParameter("secret_token"),
-      // jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken() // Use this if you are using Bearer token
-    },
-    async (token, done) => {
-      try {
-        return done(null, token.user);
-      } catch (error) {
-        done(error);
-      }
-    }
-  )
-);
+  validate(signupSchema, req.body);
 
-// This middleware saves the information provided by the user to the database,
-// and then sends the user information to the next middleware if successful.
-// Otherwise, it reports an error.
-passport.use(
-  "signup",
-  new localStrategy(
-    {
-      usernameField: "username",
-      passwordField: "password",
-      firstNameField: "firstName",
-      lastNameField: "lastName",
-      passReqToCallback: true,
-    },
-    async (req, username, password, done) => {
-      let email = req.body.email;
-      let firstname = req.body.firstname;
-      let lastname = req.body.lastname;
-      try {
-        const user = await UserModel.create({
-          username,
-          password,
-          email,
-          firstname,
-          lastname,
-        });
+  const user = await authService.createUser(req.body);
+  if (user) {
+    res
+      .status(201)
+      .json({ sucess: true, message: "User Created Successfully", data: user });
+  }
+};
 
-        return done(null, user);
-      } catch (error) {
-        done(error);
-      }
-    }
-  )
-);
+const login = async (req, res) => {
+  validate(loginSchema, req.body);
+  const { email, password } = req.body;
+  const userData = await authService.login(email, password);
+  if (userData) {
+    res.status(200).json({
+      success: true,
+      message: "User logged-in successfully",
+      data: userData,
+    });
+  }
+};
 
-// Middleware authenticates the user based on the email and password provided.
-// If the user is found, it sends the user information to the next middleware.
-// Otherwise, it reports an error.
-passport.use(
-  "login",
-  new localStrategy(
-    {
-      usernameField: "username",
-      passwordField: "password",
-    },
-    async (username, password, done) => {
-      try {
-        const user = await UserModel.findOne({ username });
-
-        if (!user) {
-          return done(null, false, { message: "User not found" });
-        }
-
-        const validate = await user.isValidPassword(password);
-
-        if (!validate) {
-          return done(null, false, { message: "Wrong Password" });
-        }
-
-        return done(null, user, { message: "Logged in Successfully" });
-      } catch (error) {
-        return done(error);
-      }
-    }
-  )
-);
+module.exports = { signUp, login };

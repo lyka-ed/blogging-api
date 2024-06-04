@@ -64,13 +64,14 @@
 - use form-encode for body signup
 
 ```
-|      key          |      vaule      |
-| ----------------- |  -------------- |
-|     username      |    gloryedem    |
-|     firstname     |    Glory        |
-|     lastname      |    Edem         |
-|     email         | glory@gmail.com |
-|     password      |    asdfghqw1    |
+|      key          |      vaule           |
+| ----------------- |  ------------------- |
+|     username      |    gloryedem         |
+|     firstname     |    Glory             |
+|     lastname      |    Edem              |
+|     fullname      | Glory Okposin Edem   |
+|     email         | glory@gmail.com      |
+|     password      |    asdfghqw1         |
 ```
 
 ### Login User
@@ -94,5 +95,35 @@
 - route: /authorblog
 - method:   POST
 - Headers: add "Authorization(query parameter)" : secret_token = {token}
+- Blog author is updated based on the full name of the logged in use.
+- Body : ......
 
 ````
+
+{
+"title": "Women without Empathy",
+"description": "A society where some women doesn't want to see others thrive.",
+"tags": ["Glory", "Women", "Society", "Edem"],
+"body": "Our society, woven with threads of progress and empowerment, there exists a troubling seam. It is a narrative of contradiction, where the aspirations of some women are hindered by the reluctance of others to witness their triumphs. This societal dynamic, often veiled in whispers and subtle gestures, speaks volumes about the complexities of human nature and the challenges of true solidarity.In this narrative, the shadows of envy and insecurity loom large, casting a pall over the collective journey towards equality and empowerment. For some women, the success of their peers becomes a bitter pill to swallow, a reflection of their own unmet aspirations or perceived inadequacies. In their reluctance to celebrate the achievements of others, they unwittingly perpetuate a cycle of competition and division, sowing seeds of discord where unity should flourish."
+}
+
+### Get All Author Blog
+
+- route: /authorblog
+- method: GET
+- Headers: Authorization (Query Parameters): secret_token = {token}
+
+### Get Specific Blog by author
+
+- route: /authorblog/:id
+- method: GET
+- Header: Authorization (Query Parameters): secret_token = {token}
+
+### Update specific blog by author
+
+- route: /authorblog/ :id
+- method: PATCH
+- Header: Authorization (Query Parameters): secret_token = {token}
+- Body:{
+  "state": "Published"
+  }

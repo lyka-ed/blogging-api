@@ -1,53 +1,62 @@
-const joi = require("joi");
+const Joi = require("joi");
 
-const ValidateUserSignUp = async (req, res, next) => {
-  try {
-    const schema = joi.object({
-      firstname: joi.string().required(),
-      lastname: joi.string().required(),
-      username: joi.string().alphanum().min(5).max(50).required(),
-      fullname: joi.string().required(),
-      email: joi
-        .string()
-        .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }),
-      password: joi
-        .string()
-        .pattern(
-          new RegExp(
-            '^(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{3,30}$'
-          )
-        ),
-    });
-    await schema.validateAsync(req.body, { abortEarly: true });
+// Sign up
+const signupSchema = Joi.object({
+  firstname: Joi.string().min(3).required(),
+  lastname: Joi.string().min(3).required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
+});
 
-    next();
-  } catch (error) {
-    return res.status(400).json({
-      mesage: error.message,
-      success: false,
-    });
-  }
-};
+// SignIn
+const loginSchema = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
+});
 
-const ValidateUserLogin = async (req, res, next) => {
-  try {
-    const schema = joi.object({
-      username: joi.string().required(),
-      password: joi.string().required(),
-    });
+const paramIdSchema = Joi.object({
+  id: Joi.string().length(24).hex().required().messages({
+    "string.base": "The id must be a string",
+    "string.length": "The id must be exactly 24 characters long.",
+    "string.hex":
+      "The id must contain only hexadecimal characters (0-9 and a-f)",
+  }),
+});
 
-    await schema.validateAsync(req.body, { abortEarly: true });
+// Create blog
+const createBlogSchema = Joi.object({
+  title: Joi.string().min(4).required(),
+  description: Joi.string().min(4),
+  body: Joi.string().min(10).required(),
+  tags: Joi.array().items(Joi.string()),
+});
 
-    next();
-  } catch (error) {
-    return res.status(400).json({
-      message: error.message,
-      success: false,
-    });
-  }
-};
+// Update Blog
+const updateBlogSchema = Joi.object({
+  title: Joi.string().min(4),
+  description: Joi.string().min(4),
+  body: Joi.string().min(10),
+  tags: Joi.array().items(Joi.string()),
+});
+
+const queryParamSchema = Joi.object({
+  page: Joi.number().integer().min(1).default(1).optional(),
+  limit: Joi.number().integer().min(1).default(20).optional(),
+  order_by: Joi.string()
+    .valid("created_at", "updated_at", "title", "read_count", "reading_time")
+    .default("created_at"),
+  order: Joi.string().valid("asc", "desc").default("desc"),
+  author: Joi.string().trim().optional(),
+  state: Joi.string().trim().optional(),
+  title: Joi.string().trim().optional(),
+  tags: Joi.string().trim().optional(),
+});
 
 module.exports = {
-  ValidateUserSignUp,
-  ValidateUserLogin,
+  signupSchema,
+  loginSchema,
+  paramIdSchema,
+  createBlogSchema,
+  updateBlogSchema,
+  queryParamSchema,
 };
