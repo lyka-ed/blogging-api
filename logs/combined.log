@@ -51,3 +51,295 @@
 [2024-06-03 21:31:34] [info] POST /api/auth/signup 201 ::1 Guest {}
 [2024-06-03 22:23:09] [info] POST /api/auth/signup 201 ::1 Guest {}
 [2024-06-03 22:38:15] [info] POST /api/auth/signup 201 ::1 Guest {}
+[2024-06-04 17:04:11] [info] POST /api/auth/login 500 ::1 Guest {}
+[2024-06-04 17:05:35] [error] POST /api/auth/login 400 ::1 Guest "SyntaxError: Unexpected token } in JSON at position 65\n    at JSON.parse (<anonymous>)\n    at parse (C:\\Users\\hp\\Desktop\\blogging-API\\node_modules\\body-parser\\lib\\types\\json.js:92:19)\n    at C:\\Users\\hp\\Desktop\\blogging-API\\node_modules\\body-parser\\lib\\read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)\n    at invokeCallback (C:\\Users\\hp\\Desktop\\blogging-API\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\hp\\Desktop\\blogging-API\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (C:\\Users\\hp\\Desktop\\blogging-API\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:513:28)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)"{}
+[2024-06-04 17:05:41] [info] POST /api/auth/login 200 ::1 Guest {}
+[2024-06-05 10:29:51] [error] POST /api/ function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:29:51] [info] POST /api/ 404 ::1 Guest {}
+[2024-06-05 10:32:20] [info] POST /api/blogs/ 401 ::1 Guest {}
+[2024-06-05 10:33:45] [info] POST /api/blogs/?token=eyJhbGciOiJIUzI1NiJ9.e30.mO4ATu66gw-RTMmL2m5wPEHT5_uLh88sPwXBxvDe5hM 500 ::1 Guest {}
+[2024-06-05 10:34:02] [info] POST /api/blogs/ 401 ::1 Guest {}
+[2024-06-05 10:44:03] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:44:03] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:45:49] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:45:49] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:48:37] [info] POST /api/auth/signup 201 ::1 Guest {}
+[2024-06-05 10:52:47] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:52:47] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:52:49] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:52:49] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:54:24] [info] POST /api/auth/login 200 ::1 Guest {}
+[2024-06-05 10:55:38] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:55:38] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:55:40] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:55:40] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:56:23] [error] GET /JAWhoAWYqFOy1YTxc8ND.FYHy0j6 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:56:23] [info] GET /JAWhoAWYqFOy1YTxc8ND.FYHy0j6 404 ::1 Guest {}
+[2024-06-05 10:56:26] [error] GET /favicon.ico function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:56:26] [info] GET /favicon.ico 404 ::1 Guest {}
+[2024-06-05 10:57:53] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:57:53] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:57:54] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:57:54] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:57:55] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:57:55] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:58:42] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:58:42] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 10:58:44] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 10:58:44] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:01:11] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 11:01:11] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:01:46] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 11:01:46] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:01:48] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 11:01:48] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:02:01] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 11:02:01] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:04:10] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 11:04:10] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:22:19] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 11:22:19] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:28:39] [info] POST /api/auth/login/ 200 ::1 Guest {}
+[2024-06-05 11:29:17] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 11:29:17] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 11:29:23] [info] POST /api/auth/login/ 200 ::1 Guest {}
+[2024-06-05 11:36:44] [info] POST /api/blogs/ 500 ::1 666034753881cf806df256ec {}
+[2024-06-05 11:37:58] [info] POST /api/blogs/ 500 ::1 666034753881cf806df256ec {}
+[2024-06-05 11:40:47] [info] POST /api/blogs 500 ::1 666034753881cf806df256ec {}
+[2024-06-05 11:42:16] [info] POST /api/blogs 500 ::1 666034753881cf806df256ec {}
+[2024-06-05 11:42:29] [info] POST /api/blogs/ 500 ::1 666034753881cf806df256ec {}
+[2024-06-05 11:53:43] [info] POST /api/blogs/ 201 ::1 666034753881cf806df256ec {}
+[2024-06-05 16:09:57] [error] POST /api/auth/login%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:09:57] [info] POST /api/auth/login%20 404 ::1 Guest {}
+[2024-06-05 16:10:03] [error] POST /api/auth/login/%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:10:03] [info] POST /api/auth/login/%20 404 ::1 Guest {}
+[2024-06-05 16:10:06] [error] POST /api/auth/login/%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:10:06] [info] POST /api/auth/login/%20 404 ::1 Guest {}
+[2024-06-05 16:11:27] [error] POST /api/auth/login/%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:11:27] [info] POST /api/auth/login/%20 404 ::1 Guest {}
+[2024-06-05 16:11:57] [error] POST /api/auth/login/%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:11:57] [info] POST /api/auth/login/%20 404 ::1 Guest {}
+[2024-06-05 16:11:58] [error] POST /api/auth/login/%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:11:58] [info] POST /api/auth/login/%20 404 ::1 Guest {}
+[2024-06-05 16:12:16] [info] POST /api/auth/login/ 200 ::1 Guest {}
+[2024-06-05 16:13:07] [error] POST /api/auth/login/%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:13:07] [info] POST /api/auth/login/%20 404 ::1 Guest {}
+[2024-06-05 16:13:19] [error] POST /api/auth/login/%20 function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 16:13:19] [info] POST /api/auth/login/%20 404 ::1 Guest {}
+[2024-06-05 16:17:16] [info] POST /api/blogs/ 401 ::1 Guest {}
+[2024-06-05 16:18:30] [info] POST /api/blogs/ 401 ::1 Guest {}
+[2024-06-05 16:18:39] [info] POST /api/blogs/ 500 ::1 666034753881cf806df256ec {}
+[2024-06-05 16:21:04] [info] POST /api/blogs/ 201 ::1 666034753881cf806df256ec {}
+[2024-06-05 17:28:57] [info] PATCH /api/blogs/:id?id=66608260edd6b6e56bac8ac0 401 ::1 Guest {}
+[2024-06-05 17:31:24] [error] POST /api/blogs/666034753881cf806df256ec function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 17:31:24] [info] POST /api/blogs/666034753881cf806df256ec 404 ::1 Guest {}
+[2024-06-05 17:31:32] [error] POST /api/blogs/666034753881cf806df256ec/ function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 17:31:32] [info] POST /api/blogs/666034753881cf806df256ec/ 404 ::1 Guest {}
+[2024-06-05 17:33:40] [error] POST /api/blogs/666034753881cf806df256ec function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 17:33:40] [info] POST /api/blogs/666034753881cf806df256ec 404 ::1 Guest {}
+[2024-06-05 17:44:11] [error] POST /api/blogs/666034753881cf806df256ec?id=666034753881cf806df256ec function status(code) {
+  if ((typeof code === 'string' || Math.floor(code) !== code) && code > 99 && code < 1000) {
+    deprecate('res.status(' + JSON.stringify(code) + '): use res.status(' + Math.floor(code) + ') instead')
+  }
+  this.statusCode = code;
+  return this;
+} ::1 Guest {}
+[2024-06-05 17:44:11] [info] POST /api/blogs/666034753881cf806df256ec?id=666034753881cf806df256ec 404 ::1 Guest {}
+[2024-06-05 17:44:29] [info] POST /api/blogs/?id=666034753881cf806df256ec 401 ::1 Guest {}
+[2024-06-05 17:45:18] [info] PATCH /api/blogs/:id?id=66608260edd6b6e56bac8ac0 401 ::1 Guest {}
+[2024-06-05 17:48:15] [info] PATCH /api/blogs/:id?id=66608260edd6b6e56bac8ac0 401 ::1 Guest {}
+[2024-06-05 17:54:33] [info] GET /api/blogs/posts?token=eyJhbGciOiJIUzI1NiJ9.e30.mO4ATu66gw-RTMmL2m5wPEHT5_uLh88sPwXBxvDe5hM 500 ::1 Guest {}
+[2024-06-05 17:55:43] [info] GET /api/blogs/posts 200 ::1 Guest {}
+[2024-06-05 17:59:20] [info] GET /api/blogs/666034753881cf806df256ec?id=666034753881cf806df256ec 500 ::1 Guest {}
